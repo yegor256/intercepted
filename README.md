@@ -31,7 +31,7 @@ Prints:
 ```
 
 The value of `e` may either be `:after` or `:before`.
-The value of the `m` is the name of the method called (a symbol).
+The value of `m` is the name of the method called (a symbol).
 The list of arguments passed are in the `args`.
 The result of method execution is in the `r` (it's nil when `e` is `:before`).
 
