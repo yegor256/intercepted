@@ -16,10 +16,10 @@ to all its methods:
 
 ```ruby
 require 'intercepted'
-i = intercepted(42) do |o, name, *args, &block|
-  r = o.__send__(name, *args, &block)
-  puts "#{name}(#{args.join(', ')}) -> #{r}"
-  r
+i = intercepted(42) do |e, m, args, r|
+  if e == :after
+    puts "#{m}(#{args.join(', ')}) -> #{r}"
+  end
 end
 puts i + 4
 ```
@@ -27,8 +27,13 @@ puts i + 4
 Prints:
 
 ```text
-
++(4) -> 46
 ```
+
+The value of `e` may either be `:after` or `:before`.
+The value of the `m` is the name of the method called (a symbol).
+The list of arguments passed are in the `args`.
+The result of method execution is in the `r` (it's nil when `e` is `:before`).
 
 That's it.
 
