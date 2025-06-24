@@ -25,7 +25,9 @@ class Testintercepted < Minitest::Test
     i = intercepted(42) do |_o, name, *args|
       a = { name:, args: }
     end
-    i.foo('hey', x: 1)
+    i.foo('hey', x: 42)
     assert_equal(:foo, a[:name])
+    assert_equal('hey', a[:args][0])
+    assert_equal(42, a[:args][1][:x])
   end
 end
