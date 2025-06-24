@@ -11,12 +11,13 @@ require_relative '../lib/intercepted'
 # License:: MIT
 class Testintercepted < Minitest::Test
   def test_simple
-    i = intercepted(42) do |name, *args, &block|
-      r = @o.__send__(name, *args, &block)
+    i = intercepted(42) do |o, name, *args, &block|
+      r = o.__send__(name, *args, &block)
       puts "#{name}(#{args.join(', ')}) -> #{r}"
       r
     end
-    refute(i)
-    puts i + 4
+
+    assert_equal(46, i + 4)
+    assert_respond_to(i, :+)
   end
 end
