@@ -16,7 +16,6 @@ class Testintercepted < Minitest::Test
       puts "#{name}(#{args.join(', ')}) -> #{r}"
       r
     end
-
     assert_equal(46, i + 4)
     assert_respond_to(i, :+)
   end
