@@ -19,4 +19,13 @@ class Testintercepted < Minitest::Test
     assert_equal(46, i + 4)
     assert_respond_to(i, :+)
   end
+
+  def test_with_named_parameters
+    a = nil
+    i = intercepted(42) do |_o, name, *args|
+      a = { name:, args: }
+    end
+    i.foo('hey', x: 1)
+    assert_equal(:foo, a[:name])
+  end
 end
