@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.description =
     'It takes an existing Ruby object and creates a new one, ' \
     'that accepts all method calls and passes them to the provided block, ' \
-    'which can pass them futher to the original object.'
+    'which can pass them further to the original object.'
   s.authors = ['Yegor Bugayenko']
   s.email = 'yegor256@gmail.com'
   s.homepage = 'https://github.com/yegor256/intercepted'
