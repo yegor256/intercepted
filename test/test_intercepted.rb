@@ -1,0 +1,22 @@
+# frozen_string_literal: true
+
+# SPDX-FileCopyrightText: Copyright (c) 2025 Yegor Bugayenko
+# SPDX-License-Identifier: MIT
+
+require_relative '../lib/intercepted'
+
+# Test.
+# Author:: Yegor Bugayenko (yegor256@gmail.com)
+# Copyright:: Copyright (c) 2025 Yegor Bugayenko
+# License:: MIT
+class Testintercepted < Minitest::Test
+  def test_simple
+    i = intercepted(42) do |name, *args, &block|
+      r = @o.__send__(name, *args, &block)
+      puts "#{name}(#{args.join(', ')}) -> #{r}"
+      r
+    end
+    refute(i)
+    puts i + 4
+  end
+end

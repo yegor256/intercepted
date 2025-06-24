@@ -1,0 +1,30 @@
+# SPDX-FileCopyrightText: Copyright (c) 2025 Yegor Bugayenko
+# SPDX-License-Identifier: MIT
+---
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'assets/**/*'
+    - 'vendor/**/*'
+  DisplayCopNames: true
+  TargetRubyVersion: 3.2
+  SuggestExtensions: false
+  NewCops: enable
+plugins:
+  - rubocop-rake
+  - rubocop-minitest
+  - rubocop-performance
+Layout/EndOfLine:
+  EnforcedStyle: lf
+Style/EvalWithLocation:
+  Enabled: false
+Metrics/AbcSize:
+  Max: 50
+Metrics/ClassLength:
+  Max: 112
+Metrics/CyclomaticComplexity:
+  Max: 22
+Metrics/PerceivedComplexity:
+  Max: 18
+Metrics/MethodLength:
+  Max: 38
