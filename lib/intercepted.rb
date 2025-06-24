@@ -5,7 +5,7 @@
 
 # System module.
 module Kernel
-  def intercepted(origin, &pipe)
+  def intercepted(origin = nil, &pipe)
     raise 'Block is expected by intercepted()' unless block_given?
 
     Class.new(BasicObject) do

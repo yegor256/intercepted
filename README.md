@@ -16,8 +16,8 @@ to all its methods:
 
 ```ruby
 require 'intercepted'
-i = intercepted(42) do |name, *args, &block|
-  r = @o.__send__(name, *args, &block)
+i = intercepted(42) do |o, name, *args, &block|
+  r = o.__send__(name, *args, &block)
   puts "#{name}(#{args.join(', ')}) -> #{r}"
   r
 end
