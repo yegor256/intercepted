@@ -43,7 +43,7 @@ class Testintercepted < Minitest::Test
     assert_equal(21, i.foo(7, bar: 8) { 6 })
   end
 
-  def test_passes_stared_args
+  def test_passes_starred_args
     o = Class.new do
       def foo(*_args)
         yield
