@@ -6,8 +6,7 @@
 # System module.
 module Kernel
   def intercepted(origin = nil)
-    raise 'Block is expected by intercepted()' unless block_given?
-
+    raise(ArgumentError, 'Block is expected by intercepted()') unless block_given?
     Class.new(BasicObject) do
       define_method(:initialize) { @o = origin }
       define_method(:method_missing) do |mtd, *args, &block|

@@ -12,9 +12,10 @@ require_relative 'test__helper'
 # License:: MIT
 class Testintercepted < Minitest::Test
   def test_simple
-    i = intercepted(42) do |e, m, args, r|
-      puts "#{m}(#{args.join(', ')}) -> #{r}" if e == :after
-    end
+    i =
+      intercepted(42) do |e, m, args, r|
+        puts("#{m}(#{args.join(', ')}) -> #{r}") if e == :after
+      end
     assert_equal(46, i + 4)
     assert_respond_to(i, :+)
   end
@@ -25,9 +26,10 @@ class Testintercepted < Minitest::Test
         bar + yield
       end
     end.new
-    i = intercepted(o) do |_e, _m, _args, _r|
-      'none'
-    end
+    i =
+      intercepted(o) do |_e, _m, _args, _r|
+        'none'
+      end
     assert_equal(11, i.foo(bar: 8) { 3 })
   end
 
@@ -37,9 +39,10 @@ class Testintercepted < Minitest::Test
         one + bar + yield
       end
     end.new
-    i = intercepted(o) do |_e, _m, _args, _r|
-      true
-    end
+    i =
+      intercepted(o) do |_e, _m, _args, _r|
+        true
+      end
     assert_equal(21, i.foo(7, bar: 8) { 6 })
   end
 
@@ -49,9 +52,10 @@ class Testintercepted < Minitest::Test
         yield
       end
     end.new
-    i = intercepted(o) do |_e, _m, _args, _r|
-      true
-    end
+    i =
+      intercepted(o) do |_e, _m, _args, _r|
+        true
+      end
     assert_equal(77, i.foo(8, 8, 8) { 77 })
   end
 end
